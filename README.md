@@ -285,7 +285,9 @@ Contributions are welcome! Whether it's a new provider, a bug fix, or a feature 
 
 ## 📜 License
 
-MIT License — Copyright (c) 2026 ByteToMRR.
+MIT License
+
+Copyright (c) 2026 ByteToMRR
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -296,7 +298,7 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-No warranty is given. See [LICENSE](LICENSE) for full text.
+
 If anything spfecific then contact [ thegoldencage.yt@gmail.com ]
 ---
 
