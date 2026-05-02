@@ -370,19 +370,14 @@ function extractUserText(messages) {
     raw = flattenContent(last.content);
   }
 
-  // ── Guaranteed fix: strip everything up to and including the LAST </system-reminder> tag.
-  //    No regex involved — works with any kind of nested or broken XML.
-  const closingTag = '</system-reminder>';
-  const idx = raw.lastIndexOf(closingTag);
-  if (idx !== -1) {
-    raw = raw.slice(idx + closingTag.length);
-  }
+  // Strip injected XML blocks (system-reminder, context, etc.)
+  // so intent detection only sees the actual user words.
+  const stripped = raw
+    .replace(/<system-reminder>[\s\S]*?<\/system-reminder>/gi, '')
+    .replace(/<[a-zA-Z_-]+>[\s\S]*?<\/[a-zA-Z_-]+>/gi, '')
+    .trim();
 
-  // Also remove any other XML-like blocks that the model might inject
-  // (this is safe because we already got the real text after system-reminder)
-  raw = raw.replace(/<[a-zA-Z_-]+>[\s\S]*?<\/[a-zA-Z_-]+>/gi, '').trim();
-
-  return raw || '';
+  return stripped;
 }
 
 // Pure greetings — must appear at the start of the message
